@@ -1,10 +1,32 @@
-/* globals.css */
 body {
+  color: white;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: #000000; /* Semi-transparent black */
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px); /* Glassy effect */
+  text-align: center;
 }
+
+.logo {
+  background-image: url('../public/logo.jpeg'); 
+  max-width: 10em; 
+  height: 10em; 
+  display: block;
+  margin: 0 auto; 
+  background-size: contain; 
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); 
+}
+
 
 .container {
   width: 100%;
@@ -14,11 +36,19 @@ body {
 }
 
 input[type="radio"] {
-  accent-color: #0070f3; /* Modern browsers support accent-color */
+  accent-color: #0070f3;
+  text-align: center;
+/* Modern browsers support accent-color */
 }
 
+.sc-dtBeHJ btFAiq{
+  align-items: center;
+}
+
+
 button {
-  background-color: #0070f3;
+  background-color: #3da4ef;
+  width: 100px;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -26,11 +56,4 @@ button {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-button:hover {
-  background-color: #005bb5;
 }

@@ -6,13 +6,16 @@ import styled from 'styled-components';
 import Result from '../components/Result';
 
 const Container = styled.div`
+  background-color: #262626; /* Semi-transparent white */
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto; /* Center the card */
+  max-width: 800px; /* Adjust based on your preference */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px); /* Glassy effect */
+  border: 1px solid rgba(255, 255, 255, 0.3);
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
 `;
 
 const Button = styled.button`
@@ -35,6 +38,8 @@ const Button = styled.button`
 export default function ResultPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
+
+  
   
   const data = {
     goal: searchParams.get('goal'),
@@ -56,7 +61,7 @@ export default function ResultPage() {
       <h1>Meal Plan Recommendation</h1>
       <Result data={data} />
       <Button onClick={restartQuestionnaire} style={{ marginTop: '20px' }}>
-        Restart Questionnaire
+        Restart
       </Button>
     </Container>
   );

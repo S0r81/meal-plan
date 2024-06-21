@@ -14,19 +14,22 @@ const schema = yup.object().shape({
   gender: yup.string().required('Gender is required'),
   age: yup.number().required('Age is required').positive().integer(),
   weight: yup.number().required('Weight is required').positive(),
-  height: yup.number().required('Height is required').positive(),
+  height: yup.string()
+  .required('Height is required')
+  .matches(/^\d+'\d+"?$/, 'Height must be in the format of feet\'inches"'),
   bodyFatKnown: yup.string().required('Body fat knowledge is required'),
   lifestyleActivity: yup.string().required('Lifestyle activity is required'),
   leanBodyMass: yup.number().when('bodyFatKnown', {
-    is: 'Yes',
-    then: yup.number().required('Lean Body Mass is required').positive(),
+    is: (value) => value === 'Yes',
+    then: () => yup.number().required('Lean Body Mass is required').positive(),
+    otherwise: () => yup.number().notRequired(),
   }),
   fatMass: yup.number().when('bodyFatKnown', {
-    is: 'Yes',
-    then: yup.number().required('Fat Mass is required').positive(),
+    is: (value) => value === 'Yes',
+    then: () => yup.number().required('Fat Mass is required').positive(),
+    otherwise: () => yup.number().notRequired(),
   }),
 });
-
 const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -35,15 +38,14 @@ const Form = styled.form`
 `;
 
 const Button = styled.button`
-  background-color: #0070f3;
+  background-color: #3f91d1;
   border: none;
   color: white;
-  padding: 10px 20px;
   text-align: center;
+  align-self: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
   cursor: pointer;
   border-radius: 4px;
   &:hover {
@@ -61,8 +63,8 @@ const questions = [
   { name: 'goal', label: 'What is your goal?', type: 'radio', options: ['Gain Weight', 'Lose Weight', 'Maintain'] },
   { name: 'gender', label: 'What is your gender?', type: 'radio', options: ['Male', 'Female'] },
   { name: 'age', label: 'What is your age?', type: 'number' },
-  { name: 'weight', label: 'What is your weight (kg)?', type: 'number' },
-  { name: 'height', label: 'What is your height (cm)?', type: 'number' },
+  { name: 'weight', label: 'What is your weight (lbs)?', type: 'number' },
+  { name: 'height', label: "What is your height (e.g., 5'8)?", type: 'text' },
   { name: 'bodyFatKnown', label: 'Do you know your body fat percentage?', type: 'radio', options: ['Yes', 'No'] },
   {
     name: 'lifestyleActivity', label: 'What is your lifestyle activity level?', type: 'radio', options: [

@@ -7,12 +7,15 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
+  align-items: center;
 `;
 
 const Label = styled.label`
   font-size: 16px;
   font-weight: bold;
+  margin-bottom: 16px; 
+
 `;
 
 const Input = styled.input`
@@ -25,6 +28,7 @@ const RadioGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  align-items: center;
 `;
 
 const RadioOption = styled.label`

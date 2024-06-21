@@ -5,7 +5,7 @@ import QuestionnaireForm from './components/QuestionnaireForm';
 export default function Home() {
   return (
     <div className="container">
-      <h1>Meal Plan Questionnaire</h1>
+    <div className="logo"></div>
       <QuestionnaireForm />
     </div>
   );
